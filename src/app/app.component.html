@@ -26,7 +26,8 @@
       formControlName="title"
     ><br>
     <small *ngIf="form.get('title')?.invalid && !form.get('title')?.pristine">Este campo deve conter entre 3 e 60 caracteres</small>
-    <button>Salvar</button>
+   <!-- Entre chaves pq estamos chamando um evento do ts. no caso o form esta definido no ts -->
+    <button [disabled]="form.invalid">Salvar</button>
   </fieldset>
 
 </form>
