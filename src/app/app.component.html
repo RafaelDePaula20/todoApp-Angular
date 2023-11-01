@@ -3,8 +3,9 @@
 
 
 <ul>
+  <p *ngIf="todos.length==0">Não tem nenhuma tarefa hoje!</p>
   <li *ngFor="let todo of todos">
-    {{ todo.id }}{{ todo.title }} |
+    {{ todo.id }}{{ todo.title }} 
     <button *ngIf="!todo.done" (click)="markAsDone(todo)">CONCLUIR</button> |
     <button *ngIf="todo.done" (click)="markAsUndone(todo)">REFAZER</button> |
     <button (click)="remove(todo)">REMOVER</button>
@@ -24,10 +25,10 @@
       placeholder="Título da Tarefa"
       maxlength="60"
       formControlName="title"
-    ><br>
+    >
     <small *ngIf="form.get('title')?.invalid && !form.get('title')?.pristine">Este campo deve conter entre 3 e 60 caracteres</small>
    <!-- Entre chaves pq estamos chamando um evento do ts. no caso o form esta definido no ts -->
-    <button [disabled]="form.invalid">Salvar</button>
+    <button [disabled]="form.invalid" (click)="add()">Salvar</button>
   </fieldset>
 
 </form>
